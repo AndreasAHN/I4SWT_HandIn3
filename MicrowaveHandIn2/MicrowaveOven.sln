@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microwave.Application", "Mi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microwave.Test.Integration", "Microwave.Test.Integration\Microwave.Test.Integration.csproj", "{454CECDC-227A-4783-8092-A55C79258AD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microwave.Test.Integration2", "Microwave.Test.Integration2\Microwave.Test.Integration2.csproj", "{3D0E7E64-E8D2-4B22-9ACD-EF85CCF725CE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{454CECDC-227A-4783-8092-A55C79258AD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{454CECDC-227A-4783-8092-A55C79258AD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{454CECDC-227A-4783-8092-A55C79258AD2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3D0E7E64-E8D2-4B22-9ACD-EF85CCF725CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3D0E7E64-E8D2-4B22-9ACD-EF85CCF725CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3D0E7E64-E8D2-4B22-9ACD-EF85CCF725CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3D0E7E64-E8D2-4B22-9ACD-EF85CCF725CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
