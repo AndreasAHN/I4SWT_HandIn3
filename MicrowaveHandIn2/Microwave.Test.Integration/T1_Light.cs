@@ -24,10 +24,41 @@ namespace Microwave.Test.Integration
             _output = new Output();
         }
 
+
+
+
+        //much alike unit test
         [Test]
-        public void SimpleIntegrationTest()
+        public void TurnOn_WasOff_CorrectOutput()
         {
-            Assert.AreEqual(1, 1);
+            _light.TurnOn();
+            output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("on")));
+            
+        }
+
+
+        [Test]
+        public void TurnOff_WasOn_CorrectOutput()
+        {
+            _light.TurnOn();
+            _light.TurnOff();
+            output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("off")));
+        }
+
+
+        [Test]
+        public void TurnOn_WasOn_CorrectOutput()
+        {
+            _light.TurnOn();
+            _light.TurnOn();
+            output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("on")));
+        }
+
+        [Test]
+        public void TurnOff_WasOff_CorrectOutput()
+        {
+            _light.TurnOff();
+            output.DidNotReceive().OutputLine(Arg.Is<string>(str => str.Contains("off")));
         }
     }
 }
