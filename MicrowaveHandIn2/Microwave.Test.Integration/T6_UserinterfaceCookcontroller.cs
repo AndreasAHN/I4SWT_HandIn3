@@ -10,11 +10,19 @@ using MicrowaveOvenClasses;
 namespace Microwave.Test.Integration
 {
     [TestFixture]
-    public class Class1
+    public class T6_UserinterfaceCookcontroller
     {
+        private IUserinterface _userinterface;
+        private ICookcontroller _cookcontroller;
+
+
+
+
         [SetUp]
         public void Setup()
         {
+            _cookcontroller = new Cookcontroller();
+            _userinterface = new Userinterface();
         }
 
         [Test]
