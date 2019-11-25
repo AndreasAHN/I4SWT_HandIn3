@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using NSubstitute;
 using MicrowaveOvenClasses;
+using MicrowaveOvenClasses.Boundary;
+using MicrowaveOvenClasses.Interfaces;
 
 namespace Microwave.Test.Integration
 {
@@ -20,8 +22,9 @@ namespace Microwave.Test.Integration
         [SetUp]
         public void Setup()
         {
-            _display = new Display();
             _output = new Output();
+            _display = new Display(_output);
+
         }
 
         [Test]

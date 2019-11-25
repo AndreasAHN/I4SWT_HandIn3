@@ -9,25 +9,25 @@ using MicrowaveOvenClasses;
 
 namespace Microwave.Test.Integration
 {
-    [TestFixture]
-    public class T7_DoorUserinterface
-    {
-        private IDoor _door;
-        private IUserinterface _userinterface;
+    //[TestFixture]
+    //public class T7_DoorUserinterface
+    //{
+    //    private IDoor _door;
+    //    private IUserinterface _userinterface;
 
 
 
-        [SetUp]
-        public void Setup()
-        {
-            _userinterface = new Userinterface();
-            _door = new Door();
-        }
+    //    [SetUp]
+    //    public void Setup()
+    //    {
+    //        _userinterface = new Userinterface();
+    //        _door = new Door();
+    //    }
 
-        [Test]
-        public void SimpleIntegrationTest()
-        {
-            Assert.AreEqual(1, 1);
-        }
-    }
+    //    [Test]
+    //    public void SimpleIntegrationTest()
+    //    {
+    //        Assert.AreEqual(1, 1);
+    //    }
+    //}
 }

@@ -61,7 +61,7 @@
     <Compile Include="T8_ButtonUserinterface.cs" />
     <Compile Include="T7_DoorUserinterface.cs" />
     <Compile Include="T6_UserinterfaceCookcontroller.cs" />
-    <Compile Include="T5_CookcontrollerUserinterfaceTimerLightPowertubeDisplay .cs" />
+    <Compile Include="T5_CookControllerUserInterfaceTimerLightPowerTubeDisplay.cs" />
     <Compile Include="T4_LightTimer .cs" />
     <Compile Include="T3_Display.cs" />
     <Compile Include="T2_Powertube.cs" />

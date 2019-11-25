@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using NSubstitute;
 using MicrowaveOvenClasses;
+using MicrowaveOvenClasses.Boundary;
+using MicrowaveOvenClasses.Interfaces;
 
 namespace Microwave.Test.Integration
 {
@@ -13,15 +15,15 @@ namespace Microwave.Test.Integration
     public class T2_Powertube
     {
 
-        private IPowertube _powertube;
+        private IPowerTube _powerTube;
         private Output _output;
 
 
         [SetUp]
         public void Setup()
         {
-            _powertube = new Powertube();
             _output = new Output();
+            _powerTube = new PowerTube(_output);
         }
 
         [Test]
