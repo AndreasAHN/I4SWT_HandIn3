@@ -64,7 +64,7 @@
     <Compile Include="T5_CookControllerUserInterfaceTimerLightPowerTubeDisplay.cs" />
     <Compile Include="T4_LightTimer .cs" />
     <Compile Include="T3_Display.cs" />
-    <Compile Include="T2_Powertube.cs" />
+    <Compile Include="T2_PowerTube.cs" />
     <Compile Include="T1_Light.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
