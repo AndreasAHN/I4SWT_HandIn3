@@ -61,5 +61,15 @@ namespace Microwave.Test.Integration
 
             _output.Received(1).OutputLine(Arg.Is<string>(x => x.Contains("on")));
         }
+
+        [Test]
+        public void TurnOnOffOff_OutputOneOff()
+        {
+            _sut.TurnOn();
+            _sut.TurnOff();
+            _sut.TurnOff();
+
+            _output.Received(1).OutputLine(Arg.Is<string>(x => x.Contains("off")));
+        }
     }
 }
