@@ -46,7 +46,7 @@ namespace Microwave.Test.Integration
             _light = new Light(_output);
             _timer = new Timer();
             _cookController = new CookController(_timer, _display, _powerTube);
-            _userinterface = new UserInterface(_powerButton, _timeButton, startCancelButton:, _door, _display, _light, _cookController);
+            _userinterface = new UserInterface(_powerButton, _timeButton, _startCancelButton, _door, _display, _light, _cookController);
 
             _stringWriter = new StringWriter();
             Console.SetOut(_stringWriter);
@@ -55,7 +55,7 @@ namespace Microwave.Test.Integration
         [Test]
         public void SimpleIntegrationTest()
         {
-            _cookController.UI = _userinterface;
+            //_cookController.UI = _userinterface;
 
             _powerButton.Press();
         }
