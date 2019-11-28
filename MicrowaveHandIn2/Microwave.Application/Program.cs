@@ -36,20 +36,28 @@ namespace Microwave.Application
             // Finish the double association
             cooker.UI = ui;
 
-            // Simulate a simple sequence
+            //Simulate a simple sequence
 
-            //powerButton.Press();
+            powerButton.Press();
+            powerButton.Press();
+            powerButton.Press();
+            powerButton.Press();
+            powerButton.Press();
+            powerButton.Press();
+            powerButton.Press();
+            powerButton.Press();
 
-            //timeButton.Press();
 
-            //startCancelButton.Press();
+            timeButton.Press();
 
-            //// The simple sequence should now run
+            startCancelButton.Press();
 
-            //System.Console.WriteLine("When you press enter, the program will stop");
-            //// Wait for input
+            // The simple sequence should now run
 
-            //System.Console.ReadLine();
+            System.Console.WriteLine("When you press enter, the program will stop");
+            // Wait for input
+
+            System.Console.ReadLine();
         }
     }
 }
