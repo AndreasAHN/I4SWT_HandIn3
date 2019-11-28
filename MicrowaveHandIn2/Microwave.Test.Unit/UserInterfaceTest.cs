@@ -156,7 +156,7 @@ namespace Microwave.Test.Unit
             // Now in SetTime
             startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
-            cooker.Received(1).StartCooking(50, 60);
+            cooker.Received(1).StartCooking(8, 60);
         }
 
         [Test]
@@ -197,7 +197,8 @@ namespace Microwave.Test.Unit
             // Should call with correct values
             startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
-            cooker.Received(1).StartCooking(100, 120);
+            // Error - power is 15 %
+            cooker.Received(1).StartCooking(15, 120);
         }
 
         [Test]
@@ -214,7 +215,8 @@ namespace Microwave.Test.Unit
             // Should call with correct values
             startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
-            cooker.Received(1).StartCooking(700, 60);
+            // Error here StartCooking should be called with percentage 1 - 100 %
+            cooker.Received(1).StartCooking(100, 60);
 
         }
 
