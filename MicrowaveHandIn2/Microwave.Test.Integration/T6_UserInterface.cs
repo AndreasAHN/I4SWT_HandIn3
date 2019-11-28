@@ -224,7 +224,7 @@ namespace Microwave.Test.Integration
 
             _startCancelButton.Pressed += Raise.Event();
 
-            _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("PowerTube works with 50 %")));
+            _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("PowerTube works with 8 %")));
         }
 
         [Test]
@@ -284,6 +284,21 @@ namespace Microwave.Test.Integration
             _startCancelButton.Pressed += Raise.Event();
 
             _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("Light is turned off")));
+        }
+
+        [Test]
+        public void OnStartCancel_StateCooking_PowerTubeLevelCorrect()
+        {
+            _powerButton.Pressed += Raise.Event();
+            _powerButton.Pressed += Raise.Event();
+            _powerButton.Pressed += Raise.Event();
+            _powerButton.Pressed += Raise.Event(); // PowerLevel = 200 W
+
+            _timeButton.Pressed += Raise.Event();
+            _startCancelButton.Pressed += Raise.Event();
+
+            // 200 W of 700 W total is 29 %
+            _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("PowerTube works with 29 %")));
         }
 
 
