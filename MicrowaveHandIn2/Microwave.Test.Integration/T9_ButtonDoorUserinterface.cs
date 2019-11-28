@@ -136,5 +136,15 @@ namespace Microwave.Test.Integration
             _timeButton.Press();
             StringAssert.IsMatch("Light is turned on", _stringWriter.ToString());
         }
+
+        [Test]
+        public void OpenDoor_WhileRunningTest()
+        {
+            _door.Close();
+            _powerButton.Press();
+            _timeButton.Press();
+            _door.Open();
+            StringAssert.IsMatch("Display cleared", _stringWriter.ToString());
+        }
     }
 }
