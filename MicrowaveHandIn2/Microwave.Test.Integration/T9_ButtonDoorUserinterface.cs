@@ -53,11 +53,88 @@ namespace Microwave.Test.Integration
         }
 
         [Test]
-        public void SimpleIntegrationTest()
+        public void DoorClosed_Just_PowerButtonPressTest()
         {
-            //_cookController.UI = _userinterface;
-
+            _door.Close();
             _powerButton.Press();
+            StringAssert.IsMatch("Display shows: 50 W", _stringWriter.ToString());
+        }
+
+        [Test]
+        public void DoorClosed_Just_StartCancelButtonPressTest()
+        {
+            _door.Close();
+            _startCancelButton.Press();
+            Assert.IsEmpty(_stringWriter.ToString());
+        }
+
+        [Test]
+        public void DoorClosed_Just_TimeButtonButtonPressTest()
+        {
+            _door.Close();
+            _timeButton.Press();
+            Assert.IsEmpty(_stringWriter.ToString());
+        }
+
+        [Test]
+        public void DoorClosed_StartCancelAndPowerButtonPressTest()
+        {
+            _door.Close();
+            _powerButton.Press();
+            _startCancelButton.Press();
+            StringAssert.IsMatch("Display cleared", _stringWriter.ToString());
+        }
+
+        [Test]
+        public void DoorClosed_TimeAndPowerButtonPressTest()
+        {
+            _door.Close();
+            _powerButton.Press();
+            _timeButton.Press();
+            StringAssert.IsMatch("Display shows: 01:00", _stringWriter.ToString());
+        }
+
+
+        [Test]
+        public void DoorOpen_Just_PowerButtonPressTest()
+        {
+            _door.Open();
+            _powerButton.Press();
+            StringAssert.IsMatch("Light is turned on", _stringWriter.ToString());
+        }
+
+        [Test]
+        public void DoorOpen_Just_StartCancelButtonPressTest()
+        {
+            _door.Open();
+            _startCancelButton.Press();
+            StringAssert.IsMatch("Light is turned on", _stringWriter.ToString());
+        }
+
+        [Test]
+        public void DoorOpen_Just_TimeButtonButtonPressTest()
+        {
+            _door.Open();
+            _timeButton.Press();
+            StringAssert.IsMatch("Light is turned on", _stringWriter.ToString());
+        }
+
+        [Test]
+        public void DoorOpen_StartCancelAndPowerButtonPressTest()
+        {
+            _door.Open();
+            _powerButton.Press();
+            _startCancelButton.Press();
+            StringAssert.IsMatch("Light is turned on", _stringWriter.ToString());
+        }
+
+        [Test]
+        public void DoorOpen_TimeAndPowerButtonPressTest()
+        {
+            _door.Open();
+            _powerButton.Press();
+            _timeButton.Press();
+            StringAssert.IsMatch("Light is turned on", _stringWriter.ToString());
         }
     }
 }

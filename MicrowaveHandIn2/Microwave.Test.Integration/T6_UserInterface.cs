@@ -185,6 +185,7 @@ namespace Microwave.Test.Integration
             _output.Received(0);
         }
 
+        [Test]
         public void OnStartCancel_StateSetPower_DisplayCleared()
         {
             _powerButton.Pressed += Raise.Event();
