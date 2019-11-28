@@ -199,8 +199,5 @@ namespace Microwave.Test.Integration
 
             _output.Received(0);
         }
-
-
-
     }
 }
