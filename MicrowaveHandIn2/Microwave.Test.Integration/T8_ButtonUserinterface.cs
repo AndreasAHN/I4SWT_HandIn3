@@ -10,15 +10,15 @@ namespace Microwave.Test.Integration
     [TestFixture]
     public class T8_ButtonUserinterface
     {
-        private IButton _powerButton, _timeButton, _startCancelButton; // sut
+        private IButton _powerButton, _timeButton, _startCancelButton;
         private IUserInterface _userInterface;
         private CookController _cookController;
         private IDisplay _display;
         private ILight _light;
-        private IDoor _door; // fake
-        private ITimer _timer; // fake 
-        private IPowerTube _powerTube; // fake
-        private IOutput _output; // fake
+        private IDoor _door;
+        private ITimer _timer; 
+        private IPowerTube _powerTube;
+        private IOutput _output;
 
 
         [SetUp]
@@ -27,12 +27,12 @@ namespace Microwave.Test.Integration
             _powerButton = new Button();
             _timeButton = new Button();
             _startCancelButton = new Button();
-            _door = Substitute.For<IDoor>();  //new Door();
-            _timer = Substitute.For<ITimer>(); // new Timer();
+            _door = Substitute.For<IDoor>(); 
+            _timer = Substitute.For<ITimer>();
             _output = Substitute.For<IOutput>();
             _display = new Display(_output);
             _light = new Light(_output);
-            _powerTube = new PowerTube(_output);
+            _powerTube = Substitute.For<IPowerTube>();
 
 
 
