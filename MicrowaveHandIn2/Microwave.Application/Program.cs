@@ -38,18 +38,18 @@ namespace Microwave.Application
 
             // Simulate a simple sequence
 
-            //powerButton.Press();
+            powerButton.Press();
 
-            //timeButton.Press();
+            timeButton.Press();
 
-            //startCancelButton.Press();
+            startCancelButton.Press();
 
             //// The simple sequence should now run
 
-            //System.Console.WriteLine("When you press enter, the program will stop");
+            System.Console.WriteLine("When you press enter, the program will stop");
             //// Wait for input
 
-            //System.Console.ReadLine();
+            System.Console.ReadLine();
         }
     }
 }
