@@ -46,7 +46,7 @@ namespace Microwave.Test.Integration
         }
 
         [Test]
-        public void DoorOpenedWhileIdle()
+        public void DoorOpenedWhileIdle_LightOn()
         {
             _userInterface.OnDoorOpened(this, EventArgs.Empty);
 
@@ -54,7 +54,7 @@ namespace Microwave.Test.Integration
         }
 
         [Test]
-        public void DoorOpenedThenClosedWhileIdle()
+        public void DoorOpenedThenClosedWhileIdle_LightOnThenO()
         {
             _userInterface.OnDoorOpened(this, EventArgs.Empty);
             _userInterface.OnDoorClosed(this, EventArgs.Empty);
@@ -68,7 +68,7 @@ namespace Microwave.Test.Integration
         }
 
         [Test]
-        public void DoorOpenedDuringSetup()
+        public void DoorOpenedDuringSetup_LightOn()
         {
             _powerButton.Press();
             _timeButton.Press();
@@ -78,7 +78,7 @@ namespace Microwave.Test.Integration
         }
 
         [Test]
-        public void DoorOpenedThenClosedDuringSetup()
+        public void DoorOpenedThenClosedDuringSetup_LightOnThenOff()
         {
             _powerButton.Press();
             _timeButton.Press();
@@ -93,7 +93,7 @@ namespace Microwave.Test.Integration
         }
 
         [Test]
-        public void DoorOpenedWhileRunning()
+        public void DoorOpenedWhileRunning_LightOn()
         {
             _powerButton.Press();
             _timeButton.Press();

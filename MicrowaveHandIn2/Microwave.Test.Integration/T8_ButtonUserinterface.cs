@@ -63,7 +63,7 @@ namespace Microwave.Test.Integration
         [TestCase(2, 100)]
         [TestCase(10, 500)]
         [TestCase(14, 700)]
-        public void PowerButtonPressedNtimes(int nPresses, int expected)
+        public void PowerButtonPressedNtimes_ShowsCorrectW(int nPresses, int expected)
         {
             for (int i = 0; i < nPresses; i++)
             {
@@ -95,7 +95,7 @@ namespace Microwave.Test.Integration
         [TestCase(2, "02:00")]
         [TestCase(6, "06:00")]
         [TestCase(11, "11:00")]
-        public void TimeButtonPressedNtimes(int nPresses, string expected)
+        public void TimeButtonPressedNtimes_ShowsCorrectTime(int nPresses, string expected)
         {
             _userInterface.OnPowerPressed(this, EventArgs.Empty);
             for (int i = 0; i < nPresses; i++)
@@ -106,7 +106,7 @@ namespace Microwave.Test.Integration
         }
 
         [Test]
-        public void StartCancelBtnPressedAfterPowerBtn()
+        public void StartCancelBtnPressedAfterPowerBtn_Shows50WThenCleared()
         {
             _userInterface.OnPowerPressed(this, EventArgs.Empty);
             _userInterface.OnStartCancelPressed(this, EventArgs.Empty);
@@ -119,7 +119,7 @@ namespace Microwave.Test.Integration
         }
 
         [Test]
-        public void StartCancelBtnPressedAfterPowerBtnTwice()
+        public void StartCancelBtnPressedAfterPowerBtnTwice_Shows50WThen100WThenCleared()
         {
             _userInterface.OnPowerPressed(this, EventArgs.Empty);
             _userInterface.OnPowerPressed(this,EventArgs.Empty);
@@ -133,7 +133,7 @@ namespace Microwave.Test.Integration
         }
 
         [Test]
-        public void StartCancelBtnPressedTwiceAfterPowerBtn()
+        public void StartCancelBtnPressedTwiceAfterPowerBtn_Shows50WThenCleared()
         {
             _userInterface.OnPowerPressed(this, EventArgs.Empty);
             _userInterface.OnStartCancelPressed(this, EventArgs.Empty);
@@ -147,7 +147,7 @@ namespace Microwave.Test.Integration
         }
 
         [Test]
-        public void StartCancelBtnPressedAfterPowerAndTimeBtn()
+        public void StartCancelBtnPressedAfterPowerAndTimeBtn_ShowsCorrectSequence()
         {
             _userInterface.OnPowerPressed(this, EventArgs.Empty);
             _userInterface.OnTimePressed(this, EventArgs.Empty);
@@ -162,7 +162,7 @@ namespace Microwave.Test.Integration
         }
 
         [Test]
-        public void StartCancelBtnPressedTwiceAfterPowerAndTimeBtnTwice()
+        public void StartCancelBtnPressedTwiceAfterPowerAndTimeBtnTwice_ShowsCorrectSequence()
         {
             _userInterface.OnPowerPressed(this, EventArgs.Empty);
             _userInterface.OnPowerPressed(this, EventArgs.Empty);
