@@ -19,14 +19,14 @@ namespace Microwave.Test.Integration
         private CookController _cookController;
         private IDisplay _display;
         private ILight _light;
-        private IButton _powerButton, _timeButton, _startCancelButton; // fake
-        private ITimer _timer;           // fake
-        private IPowerTube _powerTube;   // fake
-        private IOutput _output;         // fake
+        private IButton _powerButton, _timeButton, _startCancelButton;
+        private ITimer _timer;
+        private IPowerTube _powerTube;
+        private IOutput _output;   
 
 
 
-            [SetUp]
+        [SetUp]
         public void Setup()
         {
             _sut = new Door(); 
@@ -63,7 +63,6 @@ namespace Microwave.Test.Integration
             {
                 _output.OutputLine("Light is turned on");
                 _output.OutputLine("Light is turned off");
-                _output.OutputLine("Display cleared");
             });
 
         }
