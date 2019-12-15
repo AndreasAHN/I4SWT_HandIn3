@@ -52,16 +52,17 @@ namespace Microwave.Test.Integration
             Console.SetOut(_stringWriter);
         }
 
+        [TestCase("Display shows: 50 W")]
         [Test]
-        public void DoorClosed_Just_PowerButtonPressTest()
+        public void DoorClosed_Just_PowerButtonPress_Test(string result)
         {
             _door.Close();
             _powerButton.Press();
-            StringAssert.IsMatch("Display shows: 50 W", _stringWriter.ToString());
+            StringAssert.IsMatch(result, _stringWriter.ToString());
         }
 
         [Test]
-        public void DoorClosed_Just_StartCancelButtonPressTest()
+        public void DoorClosed_Just_StartCancelButtonPress_Test()
         {
             _door.Close();
             _startCancelButton.Press();
@@ -69,82 +70,159 @@ namespace Microwave.Test.Integration
         }
 
         [Test]
-        public void DoorClosed_Just_TimeButtonButtonPressTest()
+        public void DoorClosed_Just_TimeButtonButtonPress_Test()
         {
             _door.Close();
             _timeButton.Press();
             Assert.IsEmpty(_stringWriter.ToString());
         }
 
+        [TestCase("Display shows: 50 W")]
+        [TestCase("Display cleared")]
         [Test]
-        public void DoorClosed_StartCancelAndPowerButtonPressTest()
+        public void DoorClosed_StartCancelAndPowerButtonPress_Test(string result)
         {
             _door.Close();
             _powerButton.Press();
             _startCancelButton.Press();
-            StringAssert.IsMatch("Display cleared", _stringWriter.ToString());
+            StringAssert.IsMatch(result, _stringWriter.ToString());
         }
 
+        [TestCase("Display shows: 50 W")]
+        [TestCase("Display shows: 01:00")]
         [Test]
-        public void DoorClosed_TimeAndPowerButtonPressTest()
+        public void DoorClosed_TimeAndPowerButtonPress_Test(string result)
         {
             _door.Close();
             _powerButton.Press();
             _timeButton.Press();
-            StringAssert.IsMatch("Display shows: 01:00", _stringWriter.ToString());
+            StringAssert.IsMatch(result, _stringWriter.ToString());
         }
 
-
+        [TestCase("PowerTube works with")]
+        [TestCase("PowerTube turned off")]
+        [TestCase("Display shows: 00:00")]
         [Test]
-        public void DoorOpen_Just_PowerButtonPressTest()
-        {
-            _door.Open();
-            _powerButton.Press();
-            StringAssert.IsMatch("Light is turned on", _stringWriter.ToString());
-        }
-
-        [Test]
-        public void DoorOpen_Just_StartCancelButtonPressTest()
-        {
-            _door.Open();
-            _startCancelButton.Press();
-            StringAssert.IsMatch("Light is turned on", _stringWriter.ToString());
-        }
-
-        [Test]
-        public void DoorOpen_Just_TimeButtonButtonPressTest()
-        {
-            _door.Open();
-            _timeButton.Press();
-            StringAssert.IsMatch("Light is turned on", _stringWriter.ToString());
-        }
-
-        [Test]
-        public void DoorOpen_StartCancelAndPowerButtonPressTest()
-        {
-            _door.Open();
-            _powerButton.Press();
-            _startCancelButton.Press();
-            StringAssert.IsMatch("Light is turned on", _stringWriter.ToString());
-        }
-
-        [Test]
-        public void DoorOpen_TimeAndPowerButtonPressTest()
-        {
-            _door.Open();
-            _powerButton.Press();
-            _timeButton.Press();
-            StringAssert.IsMatch("Light is turned on", _stringWriter.ToString());
-        }
-
-        [Test]
-        public void OpenDoor_WhileRunningTest()
+        public void DoorClosed_RunnigMicrowave_Test(string result)
         {
             _door.Close();
             _powerButton.Press();
             _timeButton.Press();
+            _startCancelButton.Press();
+            var constraint = Is.True.After(62000);
+            Assert.That(() => true, constraint);
+
+            StringAssert.IsMatch(result, _stringWriter.ToString());
+        }
+
+        [TestCase("PowerTube works with")]
+        [TestCase("Light is turned on")]
+        [TestCase("PowerTube turned off")]
+        [TestCase("Light is turned off")]
+        [TestCase("Display cleared")]
+        [Test]
+        public void DoorClosed_RunnigMicrowaveAndCanceling_Test(string result)
+        {
+            _door.Close();
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
+            var constraint = Is.True.After(2000);
+            Assert.That(() => true, constraint);
+            _startCancelButton.Press();
+            StringAssert.IsMatch(result, _stringWriter.ToString());
+        }
+
+        [TestCase("PowerTube turned off")]
+        [TestCase("Light is turned off")]
+        [TestCase("Display cleared")]
+        [Test]
+        public void OpenDoor_WhileRunning_Test(string result)
+        {
+            _door.Close();
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
+            var constraint = Is.True.After(2000);
+            Assert.That(() => true, constraint);
+            _startCancelButton.Press();
             _door.Open();
-            StringAssert.IsMatch("Display cleared", _stringWriter.ToString());
+            StringAssert.IsMatch(result, _stringWriter.ToString());
+        }
+
+        [TestCase("Light is turned on")]
+        [Test]
+        public void DoorOpen_Just_PowerButtonPress_Test(string result)
+        {
+            _door.Open();
+            _powerButton.Press();
+            StringAssert.IsMatch(result, _stringWriter.ToString());
+        }
+
+        [TestCase("Light is turned on")]
+        [Test]
+        public void DoorOpen_Just_StartCancelButtonPress_Test(string result)
+        {
+            _door.Open();
+            _startCancelButton.Press();
+            StringAssert.IsMatch(result, _stringWriter.ToString());
+        }
+
+        [TestCase("Light is turned on")]
+        [Test]
+        public void DoorOpen_Just_TimeButtonButtonPress_Test(string result)
+        {
+            _door.Open();
+            _timeButton.Press();
+            StringAssert.IsMatch(result, _stringWriter.ToString());
+        }
+
+        [TestCase("Light is turned on")]
+        [Test]
+        public void DoorOpen_StartCancelAndPowerButtonPress_Test(string result)
+        {
+            _door.Open();
+            _powerButton.Press();
+            _startCancelButton.Press();
+            StringAssert.IsMatch(result, _stringWriter.ToString());
+        }
+
+        [TestCase("Light is turned on")]
+        [Test]
+        public void DoorOpen_TimeAndPowerButtonPress_Test(string result)
+        {
+            _door.Open();
+            _powerButton.Press();
+            _timeButton.Press();
+            StringAssert.IsMatch(result, _stringWriter.ToString());
+        }
+
+        [TestCase("Light is turned on")]
+        [Test]
+        public void DoorOpen_RunnigMicrowave_Test(string result)
+        {
+            _door.Open();
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
+            var constraint = Is.True.After(62000);
+            Assert.That(() => true, constraint);
+
+            StringAssert.IsMatch(result, _stringWriter.ToString());
+        }
+
+        [TestCase("Light is turned on")]
+        [Test]
+        public void DoorOpen_RunnigMicrowaveAndCanceling_Test(string result)
+        {
+            _door.Open();
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
+            var constraint = Is.True.After(2000);
+            Assert.That(() => true, constraint);
+            _startCancelButton.Press();
+            StringAssert.IsMatch(result, _stringWriter.ToString());
         }
     }
 }
